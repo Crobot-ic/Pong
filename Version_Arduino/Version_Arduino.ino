@@ -24,13 +24,21 @@ void loop () {
   moveSecondPlayer();
   setupLocation();
 }
-int readFirst(){
-  firstMove += 0;
-}
-int readSecond(){
-  secondMove += 0;
+void readFirst() {
+  if (digitalRead(button1Pin) == LOW) {
+    firstMove += 1;
+  } else if (digitalRead(button2Pin) == LOW) {
+    firstMove -= 1;
+  }
 }
 
+void readSecond() {
+  if (digitalRead(button2Pin) == LOW) {
+    secondMove += 1;
+  } else if (digitalRead(button1Pin) == LOW) {
+    secondMove -= 1;
+  }
+}
 void moveFirstPlayer() {
     readFirst();
     if(firstMove == 0) return;
