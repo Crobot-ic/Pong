@@ -24,7 +24,55 @@ void loop () {
   moveSecondPlayer();
   setupLocation();
 }
+int readFirst(){
+  firstMove += 0;
+}
+int readSecond(){
+  secondMove += 0;
+}
 
+void moveFirstPlayer() {
+    readFirst();
+    if(firstMove == 0) return;
+    if(firstMove < 0) {
+        if(firstPlayerBoard[4] == 380) return;
+        int tempTab[5];
+        for (int i = 0; i < 4; i++){ 
+          firstPlayerBoard[i]= tempTab[i+1];
+          }
+        firstPlayerBoard[4] += 20;
+        
+    } else {
+        if(firstPlayerBoard[0] == 0) return;
+        int tempTab[5]=firstPlayerBoard;
+  
+        for (int i = 1; i < 4; i++){  firstPlayerBoard[i + 1]=tempTab[i];}
+        
+        firstPlayerBoard[0] -= 20;
+    }
+}
+
+
+void moveSecondPlayer() {
+    readSecond();
+    if(secondMove == 0) return;
+    if(secondMove < 0) {
+        if(secondPlayerBoard[4] == 380) return;
+        int tempTab[5];
+        for (int i = 0; i < 4; i++){ 
+          secondPlayerBoard[i]= tempTab[i+1];
+          }
+        secondPlayerBoard[4] += 20;
+        
+    } else {
+        if(secondPlayerBoard[0] == 0) return;
+        int tempTab[5]=secondPlayerBoard;
+  
+        for (int i = 1; i < 4; i++){  secondPlayerBoard[i + 1]=tempTab[i];}
+        
+        secondPlayerBoard[0] -= 20;
+    }
+}
 // void loop() {
   // // put your main code here, to run repeatedly:
   // int firstValue = analogRead(joyX);
