@@ -3,6 +3,11 @@
 #define joy2X A2
 #define joy2Y A3
 
+int joyX = A0; 
+int joyY = A1;
+int joy2X = A2;
+int joy2Y = A3;
+
 int firstPlayerBoard[5] = {140, 160, 180, 200, 220};
 int secondPlayerBoard[5] = {159, 179, 199, 219, 239};
 int avanceX = 0, avanceY = 1;
@@ -10,6 +15,8 @@ int ball = 189;
 int firstMove = 0, secondMove = 0;
 
 void setup() {
+  pinMode(joyX, INPUT_PULLUP);
+  pinMode(joy2X, INPUT_PULLUP);
   Serial.begin(9600);
 }
 
@@ -24,18 +31,19 @@ void loop () {
   moveSecondPlayer();
   setupLocation();
 }
+
 void readFirst() {
-  if (digitalRead(button1Pin) == LOW) {
+  if (digitalRead(joyX) == LOW) {
     firstMove += 1;
-  } else if (digitalRead(button2Pin) == LOW) {
+  } else if (digitalRead(joyY) == LOW) {
     firstMove -= 1;
   }
 }
 
 void readSecond() {
-  if (digitalRead(button2Pin) == LOW) {
+  if (digitalRead(joy2X) == LOW) {
     secondMove += 1;
-  } else if (digitalRead(button1Pin) == LOW) {
+  } else if (digitalRead(joy2Y) == LOW) {
     secondMove -= 1;
   }
 }
