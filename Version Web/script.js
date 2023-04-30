@@ -93,8 +93,9 @@ const checkLeftSide = () => {
                 break;
         } 
     } else {
-        alert("1 lose");
-        window.location.reload();
+        Serial.println("1 lose");
+        // alert("1 lose");
+        // window.location.reload();
     }
 };
 
